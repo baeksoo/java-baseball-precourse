@@ -4,6 +4,7 @@ import baseball.domain.BaseBallNumbers;
 import baseball.domain.BaseBallNumbersGenerator;
 import baseball.domain.BaseBallUmpire;
 import baseball.domain.BaseBallUmpireProcessor;
+import baseball.enums.RetryStatus;
 import baseball.view.BaseBallConsole;
 import camp.nextstep.edu.missionutils.Console;
 
@@ -29,5 +30,10 @@ public class BaseBallController {
             baseBallUmpire = baseBallUmpireProcessor.process(computer, user);
             baseBallConsole.printUmpireResult(baseBallUmpire);
         }
+        retryBaseBallGameOrNot();
+    }
+
+    private void retryBaseBallGameOrNot() {
+        baseBallConsole.printRetry();
     }
 }
