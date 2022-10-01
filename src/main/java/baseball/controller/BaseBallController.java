@@ -35,5 +35,11 @@ public class BaseBallController {
 
     private void retryBaseBallGameOrNot() {
         baseBallConsole.printRetry();
+        if (RetryStatus.RETRY.equals(getRetryStatus()))
+            start();
+    }
+
+    private RetryStatus getRetryStatus() {
+        return RetryStatus.fromCode(Console.readLine());
     }
 }
