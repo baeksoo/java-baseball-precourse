@@ -22,9 +22,12 @@ public class BaseBallController {
 
     public void start() {
         BaseBallNumbers computer = baseBallNumberGenerator.createRandomBaseBallNumbers();
-        baseBallConsole.startBaseball();
-        BaseBallNumbers user = baseBallNumberGenerator.createBaseBallNumbers(Console.readLine());
-        BaseBallUmpire baseBallUmpire = baseBallUmpireProcessor.process(computer, user);
-        baseBallConsole.printUmpireResult(baseBallUmpire);
+        BaseBallUmpire baseBallUmpire = new BaseBallUmpire(0, 0);
+        while (!baseBallUmpire.isStrikeOut()) {
+            baseBallConsole.startBaseball();
+            BaseBallNumbers user = baseBallNumberGenerator.createBaseBallNumbers(Console.readLine());
+            baseBallUmpire = baseBallUmpireProcessor.process(computer, user);
+            baseBallConsole.printUmpireResult(baseBallUmpire);
+        }
     }
 }

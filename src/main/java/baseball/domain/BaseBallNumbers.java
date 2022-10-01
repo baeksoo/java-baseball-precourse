@@ -3,7 +3,6 @@ package baseball.domain;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.Set;
 
 public class BaseBallNumbers {
     private final List<Integer> numbers;

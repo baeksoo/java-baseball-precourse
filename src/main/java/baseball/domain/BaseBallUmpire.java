@@ -17,6 +17,10 @@ public class BaseBallUmpire {
         return ball;
     }
 
+    public boolean isStrikeOut() {
+        return strike == 3;
+    }
+
     public boolean isNothing() {
         return strike == 0 && ball == 0;
     }
