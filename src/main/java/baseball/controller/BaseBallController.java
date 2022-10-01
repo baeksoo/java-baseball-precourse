@@ -2,6 +2,8 @@ package baseball.controller;
 
 import baseball.domain.BaseBallNumbers;
 import baseball.domain.BaseBallNumbersGenerator;
+import baseball.domain.BaseBallUmpire;
+import baseball.domain.BaseBallUmpireProcessor;
 import baseball.view.BaseBallConsole;
 import camp.nextstep.edu.missionutils.Console;
 
@@ -9,15 +11,20 @@ public class BaseBallController {
 
     private final BaseBallNumbersGenerator baseBallNumberGenerator;
     private final BaseBallConsole baseBallConsole;
+    private final BaseBallUmpireProcessor baseBallUmpireProcessor;
 
-    public BaseBallController(BaseBallNumbersGenerator baseBallNumberGenerator, BaseBallConsole baseBallConsole) {
+    public BaseBallController(BaseBallNumbersGenerator baseBallNumberGenerator, BaseBallConsole baseBallConsole,
+                              BaseBallUmpireProcessor baseBallUmpireProcessor) {
         this.baseBallNumberGenerator = baseBallNumberGenerator;
         this.baseBallConsole = baseBallConsole;
+        this.baseBallUmpireProcessor = baseBallUmpireProcessor;
     }
 
     public void start() {
         BaseBallNumbers computer = baseBallNumberGenerator.createRandomBaseBallNumbers();
         baseBallConsole.startBaseball();
         BaseBallNumbers user = baseBallNumberGenerator.createBaseBallNumbers(Console.readLine());
+        BaseBallUmpire baseBallUmpire = baseBallUmpireProcessor.process(computer, user);
+        baseBallConsole.printUmpireResult(baseBallUmpire);
     }
 }
